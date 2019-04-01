@@ -1,14 +1,20 @@
 package data;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class UserDTO implements Serializable, IUserDTO {
-
+    @Id
     private int	userId;
     private String userName;
     private String ini;
+    @ElementCollection
     private List<String> roles;
 
     public UserDTO() {
