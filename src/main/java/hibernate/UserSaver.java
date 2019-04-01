@@ -18,7 +18,8 @@ public class UserSaver {
         prop.setProperty("hibernate.connection.username", "chbu");
         prop.setProperty("hibernate.connection.password", "4thVbCaMOxKiLKnXi3aJ4");
         prop.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-        prop.setProperty("hibernate.hbm2ddl.auto","create"); //Opretter tabeller automatisk
+        //prop.setProperty("hibernate.hbm2ddl.auto","create"); //Opretter tabeller automatisk
+        prop.setProperty("hibernate.hbm2ddl.auto","update"); //Opdaterer eksisterende tabeller
         prop.setProperty("show_sql", "true"); //If you wish to see the generated sql query
 
         //Make a Hibernate Session
@@ -29,16 +30,16 @@ public class UserSaver {
         Session session = sessionFactory.openSession();
         //Make a Dummy User
         IUserDTO user = new UserDTO();
-        user.setUserName("Brian");
+        user.setUserName("Brian17");
         user.setIni("testIni");
         user.addRole("Pedel");
-        user.setUserId(10);
+        user.setUserId(17);
         //Start Hibernate transaction
         session.beginTransaction();
         session.save(user);
         session.getTransaction().commit();
         //Try to fetch user from db
-        UserDTO userDTO = session.get(UserDTO.class, 10);
+        UserDTO userDTO = session.get(UserDTO.class, 16);
         System.out.println(userDTO);
         session.close();
     }
